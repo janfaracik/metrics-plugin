@@ -31,6 +31,8 @@ import hudson.model.queue.SubTask;
 import java.io.Serializable;
 import java.util.List;
 import jenkins.model.RunAction2;
+import jenkins.model.menu.event.DialogEvent;
+import jenkins.model.menu.event.Event;
 import org.kohsuke.accmod.Restricted;
 import org.kohsuke.accmod.restrictions.DoNotUse;
 import org.kohsuke.stapler.export.Exported;
@@ -381,4 +383,8 @@ public class TimeInQueueAction implements Serializable, RunAction2 {
         run = r;
     }
 
+    @Override
+    public Event getEvent() {
+        return DialogEvent.of("timings/dialog");
+    }
 }
